@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>כניסה למערכת ההזמנות - ח. סבן</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="flex flex-col min-h-screen">
+  <header class="bg-white shadow-md py-4 text-center">
+    <a href="index.html">
+      <!-- לוגו החברה - השתמש בתמונה אמיתית של הלוגו שלך -->
+      <img src="https://placehold.co/150x80/0000FF/FFFFFF?text=ח.סבן+לוגו" alt="לוגו ח.סבן" class="logo" />
+    </a>
+    <h1 class="text-3xl font-bold text-center text-blue-800 mb-0">מערכת ההזמנות</h1>
+  </header>
+
+  <main class="flex-grow container mx-auto p-4 flex flex-col items-center justify-center">
+    <div class="form-container">
+      <h2 class="text-2xl font-semibold text-center text-gray-800 mb-6">התחברות</h2>
+      <input type="tel" id="phone" placeholder="הכנס מספר טלפון" class="input-field mb-4" dir="ltr" />
+      <button onclick="login()" class="btn-primary">כניסה</button>
+      <div id="message-container"></div> <!-- עבור הודעות למשתמש -->
+    </div>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>
