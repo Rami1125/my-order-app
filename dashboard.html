@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>לוח בקרה - ח. סבן</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="flex flex-col min-h-screen">
+  <header class="bg-white shadow-md py-4 text-center">
+    <a href="index.html">
+      <img src="https://placehold.co/150x80/0000FF/FFFFFF?text=ח.סבן+לוגו" alt="לוגו ח.סבן" class="logo" />
+    </a>
+    <h1 class="text-3xl font-bold text-center text-blue-800 mb-0">לוח בקרה</h1>
+  </header>
+
+  <main class="flex-grow container mx-auto p-4 flex flex-col items-center">
+    <div class="dashboard-container">
+      <h2 class="text-2xl font-semibold text-center text-gray-800 mb-6">ניהול הזמנות</h2>
+
+      <div class="mb-4 flex flex-col sm:flex-row justify-center items-center gap-4">
+        <label for="filterStatus" class="text-gray-700 text-sm font-bold">סנן לפי סטטוס:</label>
+        <select id="filterStatus" class="input-field w-full sm:w-auto" onchange="loadDashboardOrders()">
+          <option value="">כל הסטטוסים</option>
+          <option value="נשלחה">נשלחה</option>
+          <option value="ממתינה">ממתינה</option>
+          <option value="סופקה">סופקה</option>
+          <option value="בוטלה">בוטלה</option>
+        </select>
+
+        <label for="filterDeliveryType" class="text-gray-700 text-sm font-bold">סנן לפי סוג הובלה:</label>
+        <select id="filterDeliveryType" class="input-field w-full sm:w-auto" onchange="loadDashboardOrders()">
+          <option value="">כל סוגי ההובלה</option>
+          <option value="רגילה">הובלה רגילה</option>
+          <option value="מנוף 10 מטר">הובלת מנוף 10 מטר</option>
+          <option value="הצבת מכולה 6 קוב">הצבת מכולה 6 קוב</option>
+          <option value="הצבת מכולה 8 קוב">הצבת מכולה 8 קוב</option>
+          <option value="הצבת מכולה 10 קוב">הצבת מכולה 10 קוב</option>
+          <option value="הוצאת מכולה">הוצאת מכולה</option>
+          <option value="החלפת מכולה">החלפת מכולה</option>
+          <option value="מלגזה">הובלה עם מלגזה</option>
+        </select>
+      </div>
+
+      <div id="ordersTableContainer" class="overflow-x-auto w-full">
+        <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-md">
+          <thead>
+            <tr class="bg-gray-100 text-gray-600 uppercase text-sm leading-normal">
+              <th class="py-3 px-6 text-right">מספר הזמנה</th>
+              <th class="py-3 px-6 text-right">לקוח</th>
+              <th class="py-3 px-6 text-right">טלפון</th>
+              <th class="py-3 px-6 text-right">מוצר</th>
+              <th class="py-3 px-6 text-right">כמות</th>
+              <th class="py-3 px-6 text-right">סוג הובלה</th>
+              <th class="py-3 px-6 text-right">אתר עבודה</th>
+              <th class="py-3 px-6 text-right">תאריך</th>
+              <th class="py-3 px-6 text-right">סטטוס</th>
+              <th class="py-3 px-6 text-right">הערות</th>
+              <th class="py-3 px-6 text-right">פעולות</th>
+            </tr>
+          </thead>
+          <tbody id="ordersTableBody" class="text-gray-700 text-sm font-light">
+            <!-- נתוני הזמנות יוצגו כאן -->
+            <tr><td colspan="11" class="py-3 px-6 text-center">טוען הזמנות...</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="dashboard-message-container"></div>
+    </div>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
