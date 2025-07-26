@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>פורטל לקוח - ח. סבן</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="flex flex-col min-h-screen">
+  <header class="bg-white shadow-md py-4 text-center">
+    <a href="index.html">
+      <img src="https://placehold.co/150x80/0000FF/FFFFFF?text=ח.סבן+לוגו" alt="לוגו ח.סבן" class="logo" />
+    </a>
+    <h1 class="text-3xl font-bold text-center text-blue-800 mb-0">פורטל לקוח</h1>
+    <p id="welcomeMessage" class="text-gray-600 mt-2"></p>
+  </header>
+
+  <main class="flex-grow container mx-auto p-4 flex flex-col items-center">
+    <div class="form-container mb-8">
+      <h2 class="text-2xl font-semibold text-center text-gray-800 mb-6">הזמנה חדשה</h2>
+
+      <label for="productList" class="block text-right text-gray-700 text-sm font-bold mb-2">בחר מוצר:</label>
+      <select id="productList" class="input-field mb-4">
+        <option value="">בחר מוצר...</option>
+      </select>
+
+      <label for="quantity" class="block text-right text-gray-700 text-sm font-bold mb-2">כמות:</label>
+      <input type="number" id="quantity" placeholder="כמות" class="input-field mb-4" min="1" />
+
+      <label for="deliveryType" class="block text-right text-gray-700 text-sm font-bold mb-2">סוג הובלה:</label>
+      <select id="deliveryType" class="input-field mb-4">
+        <option value="">בחר סוג הובלה...</option>
+        <option value="רגילה">הובלה רגילה (פריקה ידנית)</option>
+        <option value="מנוף 10 מטר">הובלת מנוף 10 מטר</option>
+        <option value="הצבת מכולה 6 קוב">הצבת מכולה 6 קוב</option>
+        <option value="הצבת מכולה 8 קוב">הצבת מכולה 8 קוב</option>
+        <option value="הצבת מכולה 10 קוב">הצבת מכולה 10 קוב</option>
+        <option value="הוצאת מכולה">הוצאת מכולה מלאה</option>
+        <option value="החלפת מכולה">החלפת מכולה (איסוף ישן + הצבת חדש)</option>
+        <option value="מלגזה">הובלה עם מלגזה</option>
+      </select>
+
+      <label for="workSite" class="block text-right text-gray-700 text-sm font-bold mb-2">אתר עבודה:</label>
+      <select id="workSite" class="input-field mb-4">
+        <option value="">בחר אתר עבודה...</option>
+      </select>
+
+      <label for="notes" class="block text-right text-gray-700 text-sm font-bold mb-2">הערות להזמנה:</label>
+      <textarea id="notes" placeholder="לדוגמה: 'לפני שער 2', 'להתקשר לפני הגעה'" class="input-field h-24 mb-6"></textarea>
+
+      <button onclick="submitOrder()" class="btn-primary">שלח הזמנה</button>
+      <div id="order-message-container"></div>
+    </div>
+
+    <div class="status-container">
+      <h2 class="text-2xl font-semibold text-center text-gray-800 mb-6">הזמנות אחרונות</h2>
+      <div id="recentOrders" class="w-full">
+        <!-- הזמנות אחרונות יוצגו כאן -->
+        <p class="text-center text-gray-500">טוען הזמנות...</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/client_portal.js"></script>
+</body>
+</html>
