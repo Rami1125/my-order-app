@@ -2,7 +2,7 @@
 
 // ** חשוב: החלף את זה בכתובת ה-URL של פריסת יישום האינטרנט שלך ב-Google Apps Script **
 // You must replace "YOUR_APPS_SCRIPT_WEB_APP_URL" with the actual URL from your Google Apps Script deployment.
-const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxe8qf4839OE-STG5Pl3RRRYKa0RuvFNE6V355ziY_wzBVwZ6chM0G5oTncYvc_08po/exec";
+const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxL3mKAxjXvfkyh9U94sJRebm-IKsLfSfSXai00CUs9BlWHPOnqLeITkpaXBwCArab2/exec";
 
 /**
  * פונקציה כללית לביצוע בקשות GET ל-Google Apps Script.
