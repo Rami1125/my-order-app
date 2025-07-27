@@ -2,7 +2,7 @@
 
 // ** חשוב: החלף את זה בכתובת ה-URL של פריסת יישום האינטרנט שלך ב-Google Apps Script **
 // You must replace "YOUR_APPS_SCRIPT_WEB_APP_URL" with the actual URL from your Google Apps Script deployment.
-const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxe8qf4839OE-STG5Pl3RRRYKa0RuvFNE6V355ziY_wzBVwZ6chM0G5oTncYvc_08po/exec"; // Example: https://script.google.com/macros/s/AKfycbz_YOUR_UNIQUE_ID_HERE/exec
+const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxe8qf4839OE-STG5Pl3RRRYKa0RuvFNE6V355ziY_wzBVwZ6chM0G5oTncYvc_08po/exec";
 
 /**
  * פונקציה כללית לביצוע בקשות GET ל-Google Apps Script.
@@ -18,19 +18,24 @@ async function apiGet(action, params = {}) {
   const urlParams = new URLSearchParams({ action, ...params }).toString();
   const url = `${GOOGLE_APPS_SCRIPT_URL}?${urlParams}`;
 
+  console.log(`[API] Sending GET request to: ${url}`); // לוג לבדיקה
   try {
     const response = await fetch(url);
+    console.log(`[API] Received response status for GET ${action}: ${response.status}`); // לוג לבדיקה
     if (!response.ok) {
       const errorText = await response.text();
+      console.error(`[API] Server error for GET ${action}: ${response.status} - ${errorText}`); // לוג שגיאה
       throw new Error(`שגיאת רשת או שרת: ${response.status} - ${errorText}`);
     }
     const data = await response.json();
     if (data.error) {
+      console.error(`[API] API returned error for GET ${action}:`, data.error); // לוג שגיאה מה-API
       throw new Error(data.error);
     }
+    console.log(`[API] Successfully received data for GET ${action}:`, data); // לוג הצלחה
     return data;
   } catch (error) {
-    console.error(`שגיאה בבקשת GET עבור ${action}:`, error);
+    console.error(`[API] Error in GET request for ${action}:`, error); // לוג שגיאה כללית
     throw error; // זרוק את השגיאה הלאה לטיפול בדף הקורא
   }
 }
@@ -46,26 +51,32 @@ async function apiGet(action, params = {}) {
  * A Promise with the response from the server.
  */
 async function apiPost(action, payload = {}) {
+  const requestBody = JSON.stringify({ action, ...payload });
+  console.log(`[API] Sending POST request to: ${GOOGLE_APPS_SCRIPT_URL} with body:`, requestBody); // לוג לבדיקה
   try {
     const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ action, ...payload }),
+      body: requestBody,
     });
 
+    console.log(`[API] Received response status for POST ${action}: ${response.status}`); // לוג לבדיקה
     if (!response.ok) {
       const errorText = await response.text();
+      console.error(`[API] Server error for POST ${action}: ${response.status} - ${errorText}`); // לוג שגיאה
       throw new Error(`שגיאת רשת או שרת: ${response.status} - ${errorText}`);
     }
     const data = await response.json();
     if (data.error) {
+      console.error(`[API] API returned error for POST ${action}:`, data.error); // לוג שגיאה מה-API
       throw new Error(data.error);
     }
+    console.log(`[API] Successfully received data for POST ${action}:`, data); // לוג הצלחה
     return data;
   } catch (error) {
-    console.error(`שגיאה בבקשת POST עבור ${action}:`, error);
+    console.error(`[API] Error in POST request for ${action}:`, error); // לוג שגיאה כללית
     throw error;
   }
 }
