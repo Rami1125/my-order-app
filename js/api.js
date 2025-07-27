@@ -1,7 +1,7 @@
 // api.js
 
 // 🔗 החלף כאן לכתובת האמיתית של ה-Web App שלך
-const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxL3mKAxjXvfkyh9U94sJRebm-IKsLfSfSXai00CUs9BlWHPOnqLeITkpaXBwCArab2/exec";
+const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw2rqBnscRML-yu2VjuWR8M6NFRGI9BhPs05adxfV9lvRBEw6X6_fhT5VnOzMr7npPL/exec";
 
 /**
  * פונקציה כללית לשליחת בקשות GET ל-Google Apps Script
